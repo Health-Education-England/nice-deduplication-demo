@@ -1,0 +1,56 @@
+﻿@model DeduplicationViewModel
+
+<ul>
+    @foreach(var doc in Model.Members)
+    {
+    <li>
+        <div>
+            <a name="ref_@doc.Id">#@doc.Id</a>
+        </div>
+        <div>
+            <b>Title:</b> @doc.Title
+        </div>
+        @if (!string.IsNullOrEmpty(doc.Authors))
+        {
+            <div>
+                <b>Authors:</b> @doc.Authors
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(doc.Citation))
+        {
+            <div>
+                <b>Citation:</b> @doc.Citation
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(doc.DOI))
+        {
+            <div>
+                <b>DOI:</b> @doc.DOI
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(doc.Issn))
+        {
+            <div>
+                <b>Issn: </b> @doc.Issn
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(doc.Abstract))
+        {
+            <div>
+                <b>Abstract: </b> @doc.Abstract
+            </div>
+        }
+        @if (doc.DeduplicationCandidates.Any())
+        {
+            <div>
+                <b>Possible Duplicates</b>
+                @foreach(var dup in doc.DeduplicationCandidates)
+                {
+                    <a href="#ref_@dup.Item1">#@dup.Item1</a>
+                }
+            </div>
+        }
+    </li>
+    <br />
+    }
+</ul>

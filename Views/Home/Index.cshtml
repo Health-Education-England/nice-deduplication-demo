@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<p>Please upload a ris file and click de-duplicate</p>
+
+<form id="file-upload" method="post" enctype="multipart/form-data"  action="/deduplication">
+
+    <div class="form-group">
+        <input type="file" name="files" required />
+    </div>
+    <button type="submit">De-duplicate</button>
+</form>
+
